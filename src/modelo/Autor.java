@@ -8,7 +8,7 @@ package modelo;
  *
  * @author USER-LENOVO
  */
-public class Autor extends Persona1 {
+public class Autor extends Persona {
      private String biografia;
 
     public Autor() {
