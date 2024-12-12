@@ -10,12 +10,12 @@ package modelo;
  */
 public class Libro {
     private String titulo;
-    private Autor autor;
+    
 
     // Constructor
-    public Libro(String titulo, Autor autor) {
+    public Libro(String titulo) {
         this.titulo = titulo;
-        this.autor = autor;
+        
     }
 
     // Getters y Setters
@@ -27,13 +27,7 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
+   
 
   
 }
