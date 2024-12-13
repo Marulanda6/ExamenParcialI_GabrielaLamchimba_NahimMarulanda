@@ -13,9 +13,9 @@ public class Libro implements Prestamo {
     private int anioPublicacion;
     private Autor autor;
 
-    public Libro(String titulo, int codigo, int anioPublicacion, Autor autor) {
+    public Libro(String titulo, String titulo1, int codigo, Autor autor) {
         this.titulo = titulo;
-        this.codigo = codigo;
+         this.codigo = codigo;
         this.anioPublicacion = anioPublicacion;
         this.autor = autor;
     }
@@ -54,12 +54,12 @@ public class Libro implements Prestamo {
 
     @Override
     public boolean disponibilidad() {
-        return true; // Implementar lógica real de disponibilidad
+        return true; 
     }
 
     @Override
     public String toString() {
-        return titulo + " (" + anioPublicacion + ") - " + autor;
+        return titulo + " (" + codigo +  " (" + anioPublicacion + ") - " + autor;
     }
 }
 

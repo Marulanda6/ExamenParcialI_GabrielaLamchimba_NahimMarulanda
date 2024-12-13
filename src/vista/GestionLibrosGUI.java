@@ -6,13 +6,17 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.Libro;
+import modelo.Autor;
+import modelo.Persona;       
+
 
 /**
  *
  * @author kirlok6
  */
 public class GestionLibrosGUI extends javax.swing.JPanel {
-
+      
     /**
      * Creates new form GestionLibrosGUI
      */
@@ -123,7 +127,7 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Titulo", "Código ", "Año de publicación", "Autor", "Bibliografia del autor", "Nacionalidad del autor", "Estado"
+                "Titulo", "Año de publicacion", "Codigo", "Autor", "Bibliografia del autor", "Nacionalidad del autor", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -169,11 +173,8 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
-                        .addComponent(jLabel1)))
+                .addGap(390, 390, 390)
+                .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -204,17 +205,20 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
                                     .addComponent(txtNacionalidadAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                                     .addComponent(txtBibliografiaAutor))))
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 1013, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnLimpiarTabla)
                 .addGap(84, 84, 84)
                 .addComponent(btnAgragarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -222,12 +226,12 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
                     .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(textCodigoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtAnioPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(textCodigoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -254,8 +258,8 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgragarLibro)
                             .addComponent(btnLimpiarTabla))
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -287,29 +291,41 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
     private void btnAgragarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgragarLibroActionPerformed
         // TODO add your handling code here:
           String titulo = txtTituloLibro.getText();
-          String codigo = textCodigoLibro.getText();
-          String anioPublicacion = txtAnioPublicacion.getText();
-          String nombreAutor = txtNombreAutor.getText();
-          String apellidoAutor = txtApellidoAutor.getText();
-          String bibliografiaAutor = txtBibliografiaAutor.getText();
-          String nacionalidadAutor = txtNacionalidadAutor.getText();
+        String codigo = textCodigoLibro.getText();
+        String anioPublicacionStr = txtAnioPublicacion.getText();
+        String nombreAutor = txtNombreAutor.getText();
+        String apellidoAutor = txtApellidoAutor.getText();
+        String bibliografiaAutor = txtBibliografiaAutor.getText();
+        String nacionalidadAutor = txtNacionalidadAutor.getText();
     
-
-    // Validar que todos los campos estén llenos
-    if (titulo.isEmpty() || codigo.isEmpty() || anioPublicacion.isEmpty() || nombreAutor.isEmpty() || apellidoAutor.isEmpty() || bibliografiaAutor.isEmpty() || nacionalidadAutor.isEmpty() ) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        
+       int anioPublicacion;
+    try {
+        anioPublicacion = Integer.parseInt(anioPublicacionStr);
+        if (anioPublicacion < 1000 || anioPublicacion > 9999) {
+            throw new NumberFormatException("Año fuera de rango.");
+        }
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "El año de publicación debe ser un número válido (e.g., 1990).", 
+            "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return;
     }
-
+        
+     Autor autor = new Autor(nombreAutor, apellidoAutor, nacionalidadAutor, bibliografiaAutor);
     
-    String autor = nombreAutor + " " + apellidoAutor;
-    
-    String disponibilidad = "Disponible";
-    
+           Libro libro = new Libro( titulo,codigo, anioPublicacion, autor);
 
     // Agregar una nueva fila a la tabla
-    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
-    model.addRow(new Object[]{titulo, codigo, anioPublicacion, autor, bibliografiaAutor, nacionalidadAutor, disponibilidad});
+             javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+              model.addRow(new Object[]{
+                  libro.getTitulo(),
+                  libro.getCodigo(),
+                  libro.getAnioPublicacion(),
+                  libro.getAutor().getNombre() + " " + libro.getAutor().getApellido(),
+                  libro.getAutor().getNacionalidad(),
+                   libro.getAutor().getBiografia(),
+                  libro.disponibilidad()? "Disponible" : "No disponible" });
+            
 
     // Limpiar los campos de texto después de agregar el libro
     txtTituloLibro.setText("");
@@ -319,6 +335,7 @@ public class GestionLibrosGUI extends javax.swing.JPanel {
     txtApellidoAutor.setText("");
     txtBibliografiaAutor.setText("");
     txtNacionalidadAutor.setText("");
+    
 
     // Mostrar un mensaje de confirmación
     javax.swing.JOptionPane.showMessageDialog(this, "Libro agregado exitosamente.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
