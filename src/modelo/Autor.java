@@ -6,6 +6,7 @@ package modelo;
 
 /**
  *
+<<<<<<< HEAD
  * @author USER-LENOVO
  */
 public class Autor extends Persona {
@@ -23,6 +24,19 @@ public class Autor extends Persona {
         this.biografia = biografia;
    
 }
+=======
+ *  @author USER-LENOVO
+ */
+public class Autor extends Persona {
+    private String biografia;
+    private String nacionalidad;
+
+    public Autor(String nombre, String apellido, String biografia, String nacionalidad) {
+        super(nombre, apellido);
+        this.biografia = biografia;
+        this.nacionalidad = nacionalidad;
+    }
+>>>>>>> Marulanda2_branch
 
     public String getBiografia() {
         return biografia;
@@ -31,6 +45,7 @@ public class Autor extends Persona {
     public void setBiografia(String biografia) {
         this.biografia = biografia;
     }
+<<<<<<< HEAD
     
     
     
@@ -38,3 +53,19 @@ public class Autor extends Persona {
     
     
 }
+=======
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre() + " " + getApellido();
+    }
+}
+>>>>>>> Marulanda2_branch
