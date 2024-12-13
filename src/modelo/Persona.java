@@ -8,10 +8,12 @@ package modelo;
  *
  * @author USER-LENOVO
  */
-<<<<<<< HEAD
-class Persona {
+
+ public class Persona {
        private String nombre;
     private String identificacion;
+      private String apellido;
+    
 
         public Persona() {
         }
@@ -22,18 +24,12 @@ class Persona {
         this.identificacion = identificacion;
     }
 
-
-=======
-public class Persona {
-    private String nombre;
-    private String apellido;
-
-    public Persona(String nombre, String apellido) {
+    public Persona(String nombre, String identificacion, String apellido) {
         this.nombre = nombre;
+        this.identificacion = identificacion;
         this.apellido = apellido;
     }
 
->>>>>>> Marulanda2_branch
     public String getNombre() {
         return nombre;
     }
@@ -42,17 +38,14 @@ public class Persona {
         this.nombre = nombre;
     }
 
-<<<<<<< HEAD
     public String getIdentificacion() {
         return identificacion;
     }
 
     public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
-    } 
-    
-}
-=======
+    }
+
     public String getApellido() {
         return apellido;
     }
@@ -60,5 +53,5 @@ public class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-}
->>>>>>> Marulanda2_branch
+   
+ }
